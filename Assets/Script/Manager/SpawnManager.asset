@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8286441e4b10d48fa92fabf956a9d43f, type: 3}
+  m_Name: SpawnManager
+  m_EditorClassIdentifier: 
+  _fish: {fileID: 1563800816688349903, guid: 6df3f311a55b74aa08c639993f73ea0a, type: 3}
+  _fishCount: {fileID: 11400000, guid: 450e16c33bd0d48c5962ef829ad6d4ed, type: 2}
+  boundery: {fileID: 11400000, guid: 009296467a0f3455480778094987e587, type: 2}
+  _fishesList: {fileID: 11400000, guid: 28799c74a1955429cbdfddba90e594f3, type: 2}
