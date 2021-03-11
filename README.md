@@ -18,7 +18,7 @@ Instead of controlling the interactions of an entire flock, however, the Boids s
 
     Birds try to change their position so that it corresponds with the average alignment of other nearby birds.
 
-- Chesion
+- Cohesion
 
     Every bird attempts to move towards the average position of other nearby birds.
 
