@@ -44,3 +44,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnManager: {fileID: 923366833593691722, guid: 8f58ec6ea9be64edb8032cd02aaf60eb, type: 3}
+  _fishCount: {fileID: 11400000, guid: 450e16c33bd0d48c5962ef829ad6d4ed, type: 2}
+  _fishCountD: {fileID: 11400000, guid: 8ca9eefff66df46f7b01758608ff1004, type: 2}
+  _w1: {fileID: 11400000, guid: 679b8202e34974754ab0e5c71972dd66, type: 2}
+  _w1d: {fileID: 11400000, guid: a8ac55348dc024ede91c405f962ce2a4, type: 2}
+  _w2: {fileID: 11400000, guid: 75649ecb13794416599baec89c744235, type: 2}
+  _w2d: {fileID: 11400000, guid: 52b778aded3da41d2a6bf958405d8746, type: 2}
+  _w3: {fileID: 11400000, guid: 417eebe96318844c283f960977ddbd3a, type: 2}
+  _w3d: {fileID: 11400000, guid: af6d6cc1a689f4b5f8d9ef0cab8361a1, type: 2}
+  _w4: {fileID: 11400000, guid: f5731b96c9a9547c18237fb9f1baf14d, type: 2}
+  _w4d: {fileID: 11400000, guid: c12dcedae16884afc9ea4999b47dd32c, type: 2}

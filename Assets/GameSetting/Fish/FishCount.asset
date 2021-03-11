@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ca75db0713f540b587dbb268d5ce092, type: 3}
-  m_Name: BoidMovementWeights
+  m_Script: {fileID: 11500000, guid: 96a02142f04a44c06b06fdd4e8e0cc6b, type: 3}
+  m_Name: FishCount
   m_EditorClassIdentifier: 
-  weightforward: 0.798
-  weightCohesion: 1
-  weightSeparation: 1
-  weightAlignment: 0.135
+  OnValueChange: {fileID: 11400000, guid: 19d33aae81a3c4b139ee09208b76cf4c, type: 2}
+  _value: 34

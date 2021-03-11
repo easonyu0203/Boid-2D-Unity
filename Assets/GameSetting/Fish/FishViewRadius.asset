@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b4d6b07761494b8289875ded0ba08f0, type: 3}
-  m_Name: FishSpeed
+  m_Name: FishViewRadius
   m_EditorClassIdentifier: 
-  Value: 7.91
+  OnValueChange: {fileID: 0}
+  _value: 5

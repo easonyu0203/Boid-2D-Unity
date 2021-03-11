@@ -61,18 +61,25 @@ public class SpawnManager : Singleton<SpawnManager>
         int currentCount = _fishesList.Value.Count;
         int diff = currentCount - _fishCount.Value;
 
-        //if(currentCount - _fishCount.Value > 0)
-        //{
-        //    while(currentCount - _fishCount.Value > 0)
-        //    {
-        //        GameObject destroyFish = _fishesList.Value[_fishesList.Value.Count - 1];
-        //        Destroy(destroyFish);
-        //    }
-        //}
-        //if (currentCount - _fishCount.Value < 0)
-        //{
-        //    RandomInstantiateFish(_fishCount.Value - currentCount);
-        //}
+        //add fish
+        if (diff < 0)
+        {
+            RandomInstantiateFish(-diff);
+        }
+        else if (diff > 0) //remove fish
+        {
+            List<GameObject> removeFish_list = new List<GameObject>();
+            for (int i = _fishesList.Value.Count - 1; i + diff > _fishesList.Value.Count - 1; i--)
+            {
+                removeFish_list.Add(_fishesList.Value[i]);
+            }
+
+            foreach(GameObject fish in removeFish_list)
+            {
+                Destroy(fish);
+            }
+        }
+
     }
 
 }

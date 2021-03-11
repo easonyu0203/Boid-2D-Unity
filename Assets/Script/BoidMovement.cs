@@ -9,7 +9,10 @@ public class BoidMovement : MonoBehaviour
     [SerializeField] FloatVariable _viewRadius;
     [SerializeField] ListGameObjectVariable _fishesList;
 
-    [SerializeField] BoidMovementWeights _boidWeights;
+    [SerializeField] FloatVariable _weightforward;
+    [SerializeField] FloatVariable _weightCohesion;
+    [SerializeField] FloatVariable _weightSeparation;
+    [SerializeField] FloatVariable _weightAlignment;
 
 
     private Rigidbody2D _rigidbody2D;
@@ -37,10 +40,10 @@ public class BoidMovement : MonoBehaviour
 
         //adding all velocity of all rules
         Vector2 velocity = (
-            _boidWeights.weightforward * (Vector2)_transform.right
-            + _boidWeights.weightCohesion * Rule1(neighboringFish_list)
-            + _boidWeights.weightSeparation * Rule2(neighboringFish_list)
-            + _boidWeights.weightAlignment * Rule3(neighboringFish_list)
+            _weightforward.Value * (Vector2)_transform.right
+            + _weightCohesion.Value * Rule1(neighboringFish_list)
+            + _weightSeparation.Value * Rule2(neighboringFish_list)
+            + _weightAlignment.Value * Rule3(neighboringFish_list)
         ).normalized * _forwardSpeed.Value;
         return velocity;
     }
@@ -77,7 +80,6 @@ public class BoidMovement : MonoBehaviour
 
     //Boid rule 1: Boids try to fly towards the centre of mass of neighbouring boids.
     //return the direction of this rule
-    [SerializeField] Transform _transformCentrolMass; //for visualization
     Vector2 Rule1(List<GameObject> neighboringFish_list)
     {
         Vector2 direction = new Vector2();
@@ -101,12 +103,6 @@ public class BoidMovement : MonoBehaviour
         //get direction
         direction = (centerPos - (Vector2)this.transform.position).normalized;
 
-        //visualize centrol mass
-        if (this.gameObject.name == "InspectFish")
-        {
-            _transformCentrolMass.position = centerPos;
-
-        }
 
         return direction;
     }

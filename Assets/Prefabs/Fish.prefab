@@ -135,4 +135,8 @@ MonoBehaviour:
   _turnSpeed: {fileID: 11400000, guid: 39277dfadaa1142c1af1fef975360e8a, type: 2}
   _viewRadius: {fileID: 11400000, guid: dc80be8871d184b17a2eea532f38b363, type: 2}
   _fishesList: {fileID: 11400000, guid: 28799c74a1955429cbdfddba90e594f3, type: 2}
-  _boidWeights: {fileID: 11400000, guid: c2805aed759d14bcd9b8980a0efaa7db, type: 2}
+  _weightforward: {fileID: 11400000, guid: 417eebe96318844c283f960977ddbd3a, type: 2}
+  _weightCohesion: {fileID: 11400000, guid: 75649ecb13794416599baec89c744235, type: 2}
+  _weightSeparation: {fileID: 11400000, guid: f5731b96c9a9547c18237fb9f1baf14d, type: 2}
+  _weightAlignment: {fileID: 11400000, guid: 679b8202e34974754ab0e5c71972dd66, type: 2}
+  _transformCentrolMass: {fileID: 0}
