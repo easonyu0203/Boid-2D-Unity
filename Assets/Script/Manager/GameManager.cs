@@ -49,4 +49,15 @@ public class GameManager : Singleton<GameManager>
         _w3.Value = _w3d.Value ;
         _w4.Value = _w4d.Value;
     }
+
+    public void OnQuitBtnClick()
+    {
+        Debug.Log("quit");
+        Application.Quit();
+    }
+
+    public void OnDefaultBtnClick()
+    {
+        UseDefaultValues();
+    }
 }

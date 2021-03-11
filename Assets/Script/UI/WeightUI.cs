@@ -26,5 +26,6 @@ public class WeightUI : MonoBehaviour
     public void OnWeightChange()
     {
         _textMesh.text = displayText + $"{Mathf.Round(_weight.Value * 10) / 10}";
+        _slider.value = _weight.Value;
     }
 }
