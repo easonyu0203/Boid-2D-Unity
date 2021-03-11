@@ -15,16 +15,30 @@ public class TeleportBoundery : MonoBehaviour
         _myTransform = transform;
     }
 
-    
+
     void FixedUpdate()
     {
-        if(Mathf.Abs(_myTransform.position.x) > _boundery.XLimit)
+        if (Mathf.Abs(_myTransform.position.x) > _boundery.XLimit)
         {
-            _myTransform.position = new Vector3(-_myTransform.position.x, _myTransform.position.y, _myTransform.position.z);
+            if (_myTransform.position.x > 0)
+            {
+                _myTransform.position = new Vector3(-_boundery.XLimit, _myTransform.position.y, _myTransform.position.z);
+            }
+            else
+            {
+                _myTransform.position = new Vector3(_boundery.XLimit, _myTransform.position.y, _myTransform.position.z);
+            }
         }
-        if(Mathf.Abs(_myTransform.position.y) > _boundery.YLimit)
+        if (Mathf.Abs(_myTransform.position.y) > _boundery.YLimit)
         {
-            _myTransform.position = new Vector3(_myTransform.position.x, -_myTransform.position.y, _myTransform.position.z);
+            if (_myTransform.position.y > 0)
+            {
+                _myTransform.position = new Vector3(_myTransform.position.x, -_boundery.YLimit, _myTransform.position.z);
+            }
+            else
+            {
+                _myTransform.position = new Vector3(_myTransform.position.x, _boundery.YLimit, _myTransform.position.z);
+            }
         }
     }
 }

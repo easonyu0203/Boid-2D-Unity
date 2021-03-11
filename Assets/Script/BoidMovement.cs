@@ -27,18 +27,20 @@ public class BoidMovement : MonoBehaviour
         //apply velocity
         _rigidbody2D.velocity = CalculateVelocity();
 
-
-
-
-
+        //rotate toward velocity direction
+        FaceFront();
     }
 
-    Vector3 CalculateVelocity()
+    Vector2 CalculateVelocity()
     {
+        List<GameObject> neighboringFish_list = GetNeighboringFishList();
+
         //adding all velocity of all rules
-        Vector3 velocity = (
-            _boidWeights.weightDefault * _transform.right
-            + _boidWeights.weight1 * Rule1()
+        Vector2 velocity = (
+            _boidWeights.weightforward * (Vector2)_transform.right
+            + _boidWeights.weightCohesion * Rule1(neighboringFish_list)
+            + _boidWeights.weightSeparation * Rule2(neighboringFish_list)
+            + _boidWeights.weightAlignment * Rule3(neighboringFish_list)
         ).normalized * _forwardSpeed.Value;
         return velocity;
     }
@@ -46,16 +48,15 @@ public class BoidMovement : MonoBehaviour
     //rotate the fish to current velocity
     void FaceFront()
     {
+        float step = Time.fixedDeltaTime * _turnSpeed.Value;
+        Vector3 newDir = Vector3.RotateTowards(_transform.right, _rigidbody2D.velocity, step, 0);
 
+        float zOffset = Vector2.SignedAngle(_transform.right, newDir);
+        _transform.Rotate(Vector3.forward, zOffset);
     }
 
-    #region Rule1_Defination
-
-    //Boid rule 1: Boids try to fly towards the centre of mass of neighbouring boids.
-    //return the direction of this rule
-    Vector3 Rule1()
+    List<GameObject> GetNeighboringFishList()
     {
-        Vector3 direction = new Vector3();
         List<GameObject> neighboringFish_list = new List<GameObject>();
 
         //get neghboring fish
@@ -64,25 +65,96 @@ public class BoidMovement : MonoBehaviour
             //don't include itself
             if (fish == this.gameObject) continue;
 
-            if (Vector3.Distance(_transform.position, fish.transform.position) <= _viewRadius.Value)
+            if (Vector2.Distance(_transform.position, fish.transform.position) <= _viewRadius.Value)
             {
                 neighboringFish_list.Add(fish);
             }
         }
+        return neighboringFish_list;
+    }
+
+    #region Rule1_Defination
+
+    //Boid rule 1: Boids try to fly towards the centre of mass of neighbouring boids.
+    //return the direction of this rule
+    [SerializeField] Transform _transformCentrolMass; //for visualization
+    Vector2 Rule1(List<GameObject> neighboringFish_list)
+    {
+        Vector2 direction = new Vector2();
+
 
         //get centrol position
-        Vector3 centerPos = Vector3.zero;
+        Vector2 centerPos = Vector2.zero;
         foreach (var fish in neighboringFish_list)
         {
-            centerPos += fish.transform.position;
+            centerPos += (Vector2)fish.transform.position;
         }
-        centerPos /= neighboringFish_list.Count;
+        if (neighboringFish_list.Count != 0)
+        {
+            centerPos /= neighboringFish_list.Count;
+        }
+        else
+        {
+            centerPos = _transform.position;
+        }
 
         //get direction
-        direction = (centerPos - this.transform.position).normalized;
+        direction = (centerPos - (Vector2)this.transform.position).normalized;
+
+        //visualize centrol mass
+        if (this.gameObject.name == "InspectFish")
+        {
+            _transformCentrolMass.position = centerPos;
+
+        }
 
         return direction;
     }
 
+    #endregion
+
+    #region Rule2_Defination
+    //Rule 2: Boids try to keep a small distance away from other objects(including other boids).
+    Vector2 Rule2(List<GameObject> neighboringFish_list)
+    {
+        Vector2 direction = Vector2.zero;
+
+        foreach (var fish in neighboringFish_list)
+        {
+            Vector2 awayFishVec = (Vector2)_transform.position - (Vector2)fish.transform.position;
+            //the closer the bigger weight it get
+            float x = awayFishVec.magnitude / _viewRadius.Value;
+            float weight = 1;
+
+            direction += awayFishVec.normalized * weight;
+        }
+        direction.Normalize();
+
+        return direction;
+    }
+    #endregion
+
+    #region Rule3_Defination
+    Vector2 Rule3(List<GameObject> neighboringFish_list)
+    {
+        Vector2 direction = new Vector2();
+
+        Vector2 centrolVelocity = Vector2.zero;
+        foreach (var fish in neighboringFish_list)
+        {
+            centrolVelocity += fish.GetComponent<Rigidbody2D>().velocity;
+        }
+        if (neighboringFish_list.Count != 0)
+        {
+            centrolVelocity /= neighboringFish_list.Count;
+        }
+        else
+        {
+            centrolVelocity = _rigidbody2D.velocity;
+        }
+        direction = centrolVelocity.normalized;
+
+        return direction;
+    }
     #endregion
 }

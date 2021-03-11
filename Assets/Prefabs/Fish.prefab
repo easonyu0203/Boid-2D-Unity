@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _forwardSpeed: {fileID: 11400000, guid: d2dcd7d5fe0494581b749991322cd5c3, type: 2}
+  _turnSpeed: {fileID: 11400000, guid: 39277dfadaa1142c1af1fef975360e8a, type: 2}
   _viewRadius: {fileID: 11400000, guid: dc80be8871d184b17a2eea532f38b363, type: 2}
   _fishesList: {fileID: 11400000, guid: 28799c74a1955429cbdfddba90e594f3, type: 2}
   _boidWeights: {fileID: 11400000, guid: c2805aed759d14bcd9b8980a0efaa7db, type: 2}

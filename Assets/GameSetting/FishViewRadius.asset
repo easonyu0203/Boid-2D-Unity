@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b4d6b07761494b8289875ded0ba08f0, type: 3}
   m_Name: FishViewRadius
   m_EditorClassIdentifier: 
-  Value: 3.7
+  Value: 5

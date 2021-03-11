@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ca75db0713f540b587dbb268d5ce092, type: 3}
   m_Name: BoidMovementWeights
   m_EditorClassIdentifier: 
-  weightDefault: 1
-  weight1: 0.411
-  weight2: 0
-  weight3: 0
+  weightforward: 0.798
+  weightCohesion: 1
+  weightSeparation: 1
+  weightAlignment: 0.135

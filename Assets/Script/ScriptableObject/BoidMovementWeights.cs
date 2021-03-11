@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObject/BoidMovementWeights")]
 public class BoidMovementWeights : ScriptableObject
 {
-    [Range(0, 1)] public float weightDefault;
-    [Range(0, 1)] public float weight1;
-    [Range(0, 1)] public float weight2;
-    [Range(0, 1)] public float weight3;
+    [Range(0, 1)] public float weightforward;
+    [Range(0, 1)] public float weightCohesion;
+    [Range(0, 1)] public float weightSeparation;
+    [Range(0, 1)] public float weightAlignment;
 }

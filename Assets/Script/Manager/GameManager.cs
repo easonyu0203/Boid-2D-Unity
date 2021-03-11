@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] SpawnManager _spawnManager;
-    // Start is called before the first frame update
+
+    [SerializeField] GameObject _spawnManager;
+    
     void Start()
     {
-        _spawnManager.Initialize();
+        StartGame();
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void StartGame()
     {
-        
+        //game start
+        //need spawnManager
+        Instantiate(_spawnManager);
+
+        //initial spawn setup
+        SpawnManager.Instance.Initialize();
     }
 }

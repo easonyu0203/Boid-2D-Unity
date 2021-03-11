@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a02142f04a44c06b06fdd4e8e0cc6b, type: 3}
   m_Name: FishCount
   m_EditorClassIdentifier: 
-  Value: 100
+  OnValueChange: {fileID: 11400000, guid: 19d33aae81a3c4b139ee09208b76cf4c, type: 2}
+  _value: 100

@@ -2,18 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T :Singleton<T>
+public class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
-    public static T Instance { get; private set; }
-    
+    private static T _instance;
+    public static T Instance
+    {
+        get
+        {
+            if (_instance == null) Debug.LogError("[Singleton] Instance is null,didn't create a instance yet.");
+            return _instance;
+        }
+    }
+
     protected virtual void Awake()
     {
 
-        if(Instance == null)
+        if (_instance == null)
         {
-            Instance = (T)this;
+            _instance = (T)this;
         }
-        else if(Instance != (T)this)
+        else if (_instance != (T)this)
         {
             Debug.LogError("Try to instantiate multiple singleton object");
             Destroy(this.gameObject);
@@ -22,7 +30,7 @@ public class Singleton<T> : MonoBehaviour where T :Singleton<T>
 
     protected virtual void OnDestroy()
     {
-        if(Instance == (T)this)
+        if (_instance == (T)this)
         {
             Destroy(this.gameObject);
         }
